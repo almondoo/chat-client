@@ -16,6 +16,7 @@ const Home: NextPage = () => {
     if (!socket) {
       if (!isConnected.current) {
         setSocket(io(process.env.NEXT_PUBLIC_CHAT_SERVER));
+        console.log(process.env.NEXT_PUBLIC_CHAT_SERVER);
         isConnected.current = true;
       }
     } else {
