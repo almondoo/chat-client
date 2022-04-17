@@ -1,5 +1,12 @@
-import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import Document, {
+  DocumentContext,
+  Html,
+  Head,
+  Main,
+  NextScript,
+} from "next/document";
+import { ServerStyleSheet } from "styled-components";
+import CssBaseline from "@mui/material/CssBaseline";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -10,7 +17,8 @@ class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
         });
 
       return {
@@ -25,7 +33,6 @@ class MyDocument extends Document {
     } finally {
       sheet.seal();
     }
-
   }
 
   render() {
@@ -36,8 +43,12 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Courgette&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Pathway+Gothic+One&family=Roboto&display=swap"
             rel="stylesheet"
           />
-          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          />
         </Head>
+        <CssBaseline />
         <body>
           <Main />
           <NextScript />
