@@ -20,6 +20,15 @@ node:
 ps:
 	docker-compose ps
 
+yarn-install:
+	@make yarn-install-for-container
+	@make yarn-install-for-host
+
+yarn-install-for-container:
+	docker-compose exec node yarn install
+
+yarn-install-for-host:
+	docker-compose run --rm -v $$(pwd)/./src:/code -w /code node yarn install
 
 npm-install:
 	@make npm-install-for-container
