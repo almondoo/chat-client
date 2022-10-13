@@ -15,7 +15,11 @@ const Home: NextPage = () => {
   useEffect(() => {
     if (!socket) {
       if (!isConnected.current) {
-        setSocket(io(process.env.NEXT_PUBLIC_CHAT_SERVER));
+        setSocket(
+          io(process.env.NEXT_PUBLIC_CHAT_SERVER, {
+            withCredentials: true,
+          })
+        );
         console.log(process.env.NEXT_PUBLIC_CHAT_SERVER);
         isConnected.current = true;
       }
